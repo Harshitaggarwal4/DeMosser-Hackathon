@@ -27,10 +27,24 @@ endBracketIdx = 0
 check = 0
 # Changing loops of if else into Switch Case
 # Run the Reformat code first
+
+level1 = 0
+level2 = 10
 for i in range(len(Lines)):
     if("if (" in Lines[i]):
+        if(";" in Lines[i] or "else" in Lines[i] or not("{" in Lines[i])):
+            startIdx = 0
+            endIdx = 0
+            endBracketIdx = 0
+            check = 0
+            level1 = 0
+            level2 = 10
+            continue
         condition1 = re.search('\((.*)\)', Lines[i])
         startIdx = i
+        level1 = 5
+        level2 = 5
+
     if("else if" in Lines[i]):
         check = 1
     if("else {" in Lines[i]):
@@ -40,28 +54,41 @@ for i in range(len(Lines)):
             startIdx = 0
             endIdx = 0
             check = 0
+            level1 = 0
+            level2 = 10
     if(check == 1):
         check = 0
         startIdx = 0
         endIdx = 0
-    if(check == 0 and startIdx != 0 and endIdx != 0):
+        level1 = 0
+        level2 = 10
+    for z in Lines[i]:
+        if(z == '}'):
+            level2 = level2 - 1
+        if(z == "{"):
+            level2 = level2 + 1
+    if(check == 0 and startIdx != 0 and endIdx != 0 and level1 == level2):
         print(condition1.group(1))
         Lines[startIdx] = "switch(" + condition1.group(1) + ") { case 1: {"
         Lines[endIdx-1] = Lines[endIdx-1] + " break; }"
-        Lines[endIdx] = "default:"
-        startIdx = 0
-        endIdx = 0
-        chcek = 0
-        # count = 1
-        # for j in range(endIdx,len(Lines),1):
-        #     for z in range(Lines[j]):
-        #         if(Lines[j][z] == "{"):
-        #             count = count + 1
-        #         if(Lines[j][z] == "}"):
-        #             count = count - 1
-        #             if(count == 0):
-        #                 Lines[j] = Lines[j][:z] + " break;"
-
+        print(startIdx)
+        Lines[endIdx] = "default: {"
+        count = level2
+        for j in range(endIdx+1,len(Lines),1):
+            for z in range(len(Lines[j])):
+                if(Lines[j][z] == "{"):
+                    count = count + 1
+                if(Lines[j][z] == "}"):
+                    count = count - 1
+                    if(count == level2-1):
+                        Lines[j] = Lines[j][:z] + " break; }}"
+                        startIdx = 0
+                        endIdx = 0
+                        check = 0
+                        level1 = 0
+                        level2 = 10
+                        break
+        
 
 
 
