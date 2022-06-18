@@ -46,8 +46,8 @@ for i in range(len(Lines)):
         endIdx = 0
     if(check == 0 and startIdx != 0 and endIdx != 0):
         print(condition1.group(1))
-        Lines[startIdx] = "switch(" + condition1.group(1) + ") { case 1:"
-        Lines[endIdx-1] = Lines[endIdx-1] + " break;"
+        Lines[startIdx] = "switch(" + condition1.group(1) + ") { case 1: {"
+        Lines[endIdx-1] = Lines[endIdx-1] + " break; }"
         Lines[endIdx] = "default:"
         startIdx = 0
         endIdx = 0
