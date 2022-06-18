@@ -34,7 +34,7 @@ for i in x:
     if count % 15 == 0:
         if count != 0:
             string = str(c)
-            x.insert(count, "long long int " + "_querry___"+string+" = 0;")
+            x.insert(count, "long long int " + "_querry___"+string+";")
             count = count+1
             c = c+1
     count = count+1
