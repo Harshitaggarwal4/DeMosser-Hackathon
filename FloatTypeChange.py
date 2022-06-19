@@ -1,3 +1,8 @@
+'''
+Developer: Yash Bhaskar
+Date: 18 Jun 2022
+Function: Changes all the float Datatypes declared as double.
+'''
 import os
 os.system('clang-format -style=Google -i ./input.c')
 
