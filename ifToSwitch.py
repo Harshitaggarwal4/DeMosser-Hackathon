@@ -126,8 +126,11 @@ for line_Ind in range(totalLines+1000):
         else:
             if_starts = line_Ind
             subLine = line[if_Ind:line_Length-1:]
-            subLine_Tokens = subLine.split("(")
-            if_expr = subLine_Tokens[1].split(")")[0]
+            if_expr_stInd = subLine.find("(")
+            if_expr_endInd = subLine.rfind(")")
+            # subLine_Tokens = subLine.split("(")
+            # if_expr = subLine_Tokens[1].split(")")[0]
+            if_expr = subLine[if_expr_stInd+1:if_expr_endInd:]
             count = 1
             continue
 
