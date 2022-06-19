@@ -77,3 +77,11 @@ int binarySearch_searching(int arr[], int l, int r, int x)
     }
     return -1;
 }
+
+struct Hash_Hashing {
+  char Hash[50];
+  int frequency;
+  float value;
+};
+
+
