@@ -11,15 +11,6 @@ with open('code2.c','r') as f:
 	Lines = f.readlines()
 
 
-with open('code2.c','r') as f:
-    file1 = f.read()
-
-
-# print(file1)
-# print(type(Lines[1]))
-
-
-
 for i in range(len(Lines)):
 	Lines[i] = Lines[i].strip()
 
@@ -63,6 +54,4 @@ file1 = open('input1.c', 'w')
 file1.writelines(Lines)
 file1.close()
 
-for i in Lines:
-	print(i)
 
