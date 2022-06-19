@@ -1,5 +1,5 @@
 import os
-os.system('clang-format -style=Google -i ./input2.c')
+os.system('clang-format -style=Google -i ./input.c')
 
 
 with open('input.c','r') as f:
@@ -18,7 +18,7 @@ for i in range(len(Lines)):
     if("int main" in Lines[i]):
         chk = 1
         continue
-    if("int main" in Lines[i] or "for" in Lines[i] or "for" in Lines[i] or "for" in Lines[i] and chk == 1):
+    if(chk != 1):
         continue
     if("scanf" in Lines[i]):
         tempStr = ""
