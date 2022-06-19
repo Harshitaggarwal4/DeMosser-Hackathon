@@ -28,10 +28,12 @@ check = 0
 # Changing loops of if else into Switch Case
 # Run the Reformat code first
 
+counter = 0
 level1 = 0
 level2 = 10
 for i in range(len(Lines)):
     if("if (" in Lines[i]):
+        counter = counter + 1
         if(";" in Lines[i] or "else" in Lines[i] or not("{" in Lines[i])):
             startIdx = 0
             endIdx = 0
@@ -44,7 +46,8 @@ for i in range(len(Lines)):
         startIdx = i
         level1 = 5
         level2 = 5
-
+    if(counter == 2):
+        break
     if("else if" in Lines[i]):
         check = 1
     if("else {" in Lines[i]):
