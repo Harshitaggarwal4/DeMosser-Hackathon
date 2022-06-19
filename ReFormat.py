@@ -1,3 +1,8 @@
+'''
+Developer: Yash Bhaskar
+Date: 18 Jun 2022
+Function: Adds/Complete the brackets {} in case of if(), for(), while() loops in the code
+'''
 import os
 os.system('clang-format -style=Google -i ./code2.c')
 
