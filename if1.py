@@ -26,6 +26,8 @@ for i in range(len(Lines)):
         continue
     if("*" in Lines[i]):
         continue
+    if("=" in Lines[i]):
+        continue
     if("scanf" in Lines[i]):
         tempStr = ""
         tempStr = tempStr + \
