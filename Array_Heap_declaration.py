@@ -1,7 +1,4 @@
-import os
-os.system('clang-format -style=Google -i ./input.c')
-
-input_c = "input.c"
+input_c = "test.c"
 output_c = "out1.c"
 
 in1 = open(input_c, "r")
@@ -11,7 +8,7 @@ lines = in1.readlines()
 dataTypes = ["char", "float", "double","int", "long", "long int", "long long", "long long int"]
 
 def convertArrToHeap():
-    
+    level = 0
     for line_Index in range (len(lines)):
         line = lines[line_Index]
 
@@ -45,14 +42,25 @@ def convertArrToHeap():
                 if (ind1 != -1):
                     used_DT = type
                     break
-        
-        if (ind_o == -1 or ind1 == -1):     # if square brackets arent present, no arrays are declared
-            continue
 
         newLine_Ind_o2 = line.find("{", 0, length)
         if newLine_Ind_o2 != -1:
+            if line.find("}", 0, length) == -1:
+                level += 1
             continue
-        
+
+        newLine_Ind_o2 = line.find("}", 0, length)
+        if newLine_Ind_o2 != -1:
+            if line.find("{", 0, length) == -1:
+                level -= 1
+            continue
+
+        if (ind_o == -1 or ind1 == -1):     # if square brackets arent present, no arrays are declared
+            continue
+
+        if level == 0:
+            continue
+
         newLines = line.split(",")
         numNewLines = len(newLines)
         for newLine_Ind in range(numNewLines):
@@ -138,6 +146,3 @@ for item in lines:
 
 out1.close()
 in1.close()
-
-os.system('clang-format -style=Google -i ./out1.c')
-os.system('clang-format -style=Google -i ./input.c')
