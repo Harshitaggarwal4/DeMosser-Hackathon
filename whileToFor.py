@@ -1,3 +1,8 @@
+'''
+Developer: Yash Bhaskar
+Date: 18 Jun 2022
+Function: Changing all While loops to For loops.
+'''
 import os
 from tracemalloc import start
 os.system('clang-format -style=Google -i ./input2.c')
