@@ -1,3 +1,8 @@
+'''
+Developer: Yash Bhaskar
+Date: 18 Jun 2022
+Function: Changes all the int Datatypes declared as long long int.
+'''
 import os
 os.system('clang-format -style=Google -i ./input.c')
 
