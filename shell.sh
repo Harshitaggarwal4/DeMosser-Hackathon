@@ -26,3 +26,7 @@ python3 changeIncrement.py
 python3 Mul_1_Add_zero.py
 mv out11.c final_output_with_hashtag.c
 rm out*
+
+sudo chmod +x moss.pl
+./moss.pl ./input.c ./final_output.c
+./moss.pl ./input.c ./final_output_with_hashtag.c
