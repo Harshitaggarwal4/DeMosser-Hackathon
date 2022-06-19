@@ -1,3 +1,8 @@
+'''
+Developer: Yash Bhaskar
+Date: 18 Jun 2022
+Function: Adding a structure to the code.
+'''
 import os
 os.system('clang-format -style=Google -i ./input2.c')
 
