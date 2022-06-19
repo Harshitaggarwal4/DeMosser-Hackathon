@@ -1,5 +1,5 @@
 import os
-os.system('clang-format -style=Google -i ./input.c')
+os.system('clang-format -style=Google -i ./out7.c')
 
 
 with open('out7.c','r') as f:
@@ -48,4 +48,4 @@ for i in range(len(Lines)):
 file1 = open('out8.c', 'w')
 file1.writelines(Lines)
 file1.close()
-os.system('clang-format -style=Google -i ./out.c')
+os.system('clang-format -style=Google -i ./out8.c')
