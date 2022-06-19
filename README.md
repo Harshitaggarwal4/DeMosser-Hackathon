@@ -27,3 +27,4 @@ De Mosses a given c code
 - [ ] random testcase generator to review the final output
 - [ ] split a function into multiple parts using program flow graph (PFG)
 - [ ] change the order of execution of the program (PFG)
+- [ ] ***Comments*** need to be handled.
