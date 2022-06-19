@@ -1,3 +1,8 @@
+'''
+Developer: Yash Bhaskar
+Date: 18 Jun 2022
+Function: Adds #define one 1 & #define zero 0
+'''
 import os
 os.system('clang-format -style=Google -i ./input.c')
 
