@@ -39,17 +39,20 @@ for line_Ind in range(totalLines+1000):
                 count -= 1
             else_body += char
             if count == 0: # end of if else
-                # line = line[char_Ind+1::]
-                # print(line_Ind)
-                # print(if_starts)
                 for delLine_Ind in range(if_starts, line_Ind+1):
                     lines[delLine_Ind] = ""
 
+                # switch_if_body = if_body.replace("}", "\n}")
+                break_if_body_Ind = if_body.rindex("}")
+                switch_break_text = "break;\n"
+                switch_break_text += if_body[break_if_body_Ind::]
+                sub_if_body = if_body[:break_if_body_Ind:]
+                sub_if_body += switch_break_text
+
                 switch_Command = "switch (%s) {\n"%if_expr
-                switch_Command += "case 1: {\n" + if_body +"\n"
+                switch_Command += "case 1: {\n" + sub_if_body +"\n"
                 switch_Command += "default: {\n" + else_body +"\n}\n"
                 lines.insert(if_starts, switch_Command)
-                # print(switch_Command)
 
                 if_Ind = -1
                 if_body = ""
@@ -65,7 +68,6 @@ for line_Ind in range(totalLines+1000):
 
 
     if if_Ind != -1:
-        # print("work")
         elseIf_Ind = line.find("else if")
         if elseIf_Ind != -1 and count == 0:
             if_Ind = -1
@@ -79,20 +81,13 @@ for line_Ind in range(totalLines+1000):
             if_starts=-1
 
         else_Ind = line.find("else {")
-        # print(line)
-        # print(line_Ind)
         if else_Ind != -1:
-            # print("hehehe")
             if count == 0:  # it is an if-else condition
                 flag = 1
-                # print("here1")
                 count = 1
                 continue
 
-            # nothing special, we are inside if-body
-        # print(line)
         if count == 0:
-            # print("i am here")
             if_Ind = -1
             if_body = ""
             else_body = ""
@@ -108,23 +103,16 @@ for line_Ind in range(totalLines+1000):
             if char == "{":
                 count += 1
             elif char == "}":
-                # print(char)
                 count -= 1
-                # print(count)
             if_body += char
             if count == 0:
-                # print("hehe")
                 lines.insert(line_Ind, "")
                 break    
-        # print(line_Ind)
-        # print(lines[line_Ind+1])
         continue
 
     
     if_Ind = line.find("if (")
-    # print("if_ind lets goo")
     if if_Ind != -1:
-        # print("please work")
         elseIf_Ind = line.find("else if")
         if elseIf_Ind != -1:
             if_Ind = -1
@@ -138,12 +126,10 @@ for line_Ind in range(totalLines+1000):
             flag=0
             continue
         else:
-            # print("found if")
             if_starts=line_Ind
             subLine = line[if_Ind:line_Length-1:]
             subLine_Tokens = subLine.split("(")
             if_expr = subLine_Tokens[1].split(")")[0]
-            # print(if_expr)
             count = 1
             continue
 
