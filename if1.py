@@ -2,7 +2,7 @@ import os
 os.system('clang-format -style=Google -i ./input.c')
 
 
-with open('input.c','r') as f:
+with open('out7.c','r') as f:
 	Lines = f.readlines()
 
 
@@ -19,6 +19,8 @@ for i in range(len(Lines)):
         chk = 1
         continue
     if(chk != 1):
+        continue
+    if("for" in Lines[i]):
         continue
     if("scanf" in Lines[i]):
         tempStr = ""
@@ -43,7 +45,7 @@ for i in range(len(Lines)):
 for i in range(len(Lines)):
 	Lines[i] = Lines[i] + "\n"
 
-file1 = open('out.c', 'w')
+file1 = open('out8.c', 'w')
 file1.writelines(Lines)
 file1.close()
 os.system('clang-format -style=Google -i ./out.c')
