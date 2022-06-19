@@ -11,20 +11,12 @@ with open('code2.c','r') as f:
 	Lines = f.readlines()
 
 
-with open('code2.c','r') as f:
-    file1 = f.read()
-
-
-# print(file1)
-# print(type(Lines[1]))
-
 for i in range(len(Lines)):
 	Lines[i] = Lines[i].strip()
 
 
 Lines.insert(0,"#define one 1")
 Lines.insert(0,"#define zero 0")
-
 
 
 
@@ -43,7 +35,6 @@ for i in range(len(Lines)):
 
 
 
-
 # Adding that to 9; , etc cases
 for i in range(len(Lines)):
     if("define" in Lines[i]):
@@ -57,7 +48,6 @@ for i in range(len(Lines)):
                     continue
         tempLine = tempLine + Lines[i][j]
     Lines[i] = tempLine
-
 
 
 
@@ -78,7 +68,6 @@ for i in range(len(Lines)):
 
 
 
-
 for i in range(len(Lines)):
 	Lines[i] = Lines[i] + "\n"
 
@@ -87,6 +76,4 @@ file1 = open('input2.c', 'w')
 file1.writelines(Lines)
 file1.close()
 
-for i in Lines:
-	print(i)
 
