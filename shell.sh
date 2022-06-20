@@ -1,3 +1,6 @@
+#! /bin/bash
+sudo apt-get install -y clang-format
+
 python3 ReFormat.py
 python3 Array_Heap_declaration.py
 python3 IntTypeChange.py
