@@ -4,17 +4,21 @@ void merge_sort_sort(int arr[], int l, int m, int r)
     int n1 = m - l + 1;
     int n2 = r - m;
     int L[n1], R[n2];
+
     for (i = 0; i < n1; i++)
     {
         L[i] = arr[l + i];
     }
+
     for (j = 0; j < n2; j++)
     {
         R[j] = arr[m + 1 + j];
     }
+
     i = 0;
     j = 0;
     k = l;
+
     while (i < n1 && j < n2)
     {
         if (L[i] <= R[j])
@@ -29,12 +33,14 @@ void merge_sort_sort(int arr[], int l, int m, int r)
         }
         k++;
     }
+
     while (i < n1)
     {
         arr[k] = L[i];
         i++;
         k++;
     }
+
     while (j < n2)
     {
         arr[k] = R[j];
@@ -42,6 +48,7 @@ void merge_sort_sort(int arr[], int l, int m, int r)
         k++;
     }
 }
+
 void merge_sorting_sort(int arr[], int l, int r)
 {
     if (l < r)
@@ -52,6 +59,7 @@ void merge_sorting_sort(int arr[], int l, int r)
         merge_sort_sort(arr, l, m, r);
     }
 }
+
 void swap_swapping(int *a, int *b)
 {
     int temp;
@@ -60,6 +68,7 @@ void swap_swapping(int *a, int *b)
     (*b) = temp;
     return;
 }
+
 int binarySearch_searching(int arr[], int l, int r, int x)
 {
     if (r >= l)
@@ -77,7 +86,3 @@ int binarySearch_searching(int arr[], int l, int r, int x)
     }
     return -1;
 }
-
-
-
-

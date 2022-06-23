@@ -1,30 +1,40 @@
+'''
+First Updated: 18 Jun 2022
+Last Updated: 23 Jun 2022
+Function: 
+'''
 import os
-os.system('clang-format -style=Google -i ./out9.c')
-input_c = "out9.c"
-output_c = "out10.c"
 
-in1 = open(input_c, "r")
-out1 = open(output_c, "w")
 
-lines = in1.readlines()
+def change_increment(input_file, output_file):
+    os.system('clang-format -style=Google -i ./%s' % input_file)
 
-length = len(lines)
-for line_Ind in range(length + 1000):
-    minecraft = len(lines)
-    if line_Ind >= minecraft:
-        break
+    in1 = open(input_file, "r")
+    out1 = open(output_file, "w")
 
-    line = lines[line_Ind]
-    # inc_Ind = line.find("++")
-    # if inc_Ind == -1:
-    #     continue
+    lines = in1.readlines()
 
-    line = line.replace("++;", "+=1;")
-    lines[line_Ind] = line
+    length = len(lines)
+    for line_Ind in range(length + 1000):
+        minecraft = len(lines)
+        if line_Ind >= minecraft:
+            break
 
-for line in lines:
-    out1.write("%s" % line)
+        line = lines[line_Ind]
+        # inc_Ind = line.find("++")
+        # if inc_Ind == -1:
+        #     continue
 
-in1.close()
-out1.close()
-os.system('clang-format -style=Google -i ./out10.c')
+        line = line.replace("++;", "+=1;")
+        lines[line_Ind] = line
+
+    for line in lines:
+        out1.write("%s" % line)
+
+    in1.close()
+    out1.close()
+    os.system('clang-format -style=Google -i ./%s' % output_file)
+
+
+if __name__ == '__main__':
+    change_increment("out9.c", "out10.c")
