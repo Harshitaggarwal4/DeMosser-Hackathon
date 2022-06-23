@@ -4,6 +4,7 @@ Last Updated: 23 Jun 2022
 Function: Main program to run the Files
 '''
 import os
+import sys
 
 from add_random_stuff import add_random_stuff
 from Array_Heap_declaration import array_heap_declaration
@@ -25,7 +26,10 @@ def less_demoss(input_file, output_file):
     # Lesser Demossing, but not easily detectable
 
     file_name = input_file[:-2]+"_temp_"
-    reformat(input_file, file_name+"1.c")
+    # So as not to touch given input file
+    os.system("cp %s %s"%(input_file,file_name+"0.c"))
+
+    reformat(file_name+"0.c", file_name+"1.c")
     array_heap_declaration(file_name+"1.c", file_name+"2.c")
     int_type_change(file_name+"2.c", file_name+"3.c")
     char_type_change(file_name+"3.c", file_name+"4.c")
@@ -44,7 +48,10 @@ def more_demoss(input_file, output_file):
     # More Demossing, but easily detectable
 
     file_name = input_file[:-2]+"_temp_"
-    reformat(input_file, file_name+"1.c")
+    # So as not to touch given input file
+    os.system("cp %s %s" % (input_file, file_name+"0.c"))
+
+    reformat(file_name+"0.c", file_name+"1.c")
     array_heap_declaration(file_name+"1.c", file_name+"2.c")
     int_type_change(file_name+"2.c", file_name+"3.c")
     char_type_change(file_name+"3.c", file_name+"4.c")
@@ -61,7 +68,15 @@ def more_demoss(input_file, output_file):
 
 
 if __name__ == '__main__':
-    less_demoss("input.c", "final_output.c")
-    more_demoss("input.c", "final_output_with_hashtag.c")
+    input_file = "input.c"
+    output_file1 = "final_output.c"
+    output_file2 = "final_output_with_hashtag.c"
+    if len(sys.argv) > 3:
+        input_file = sys.argv[1]
+        output_file1 = sys.argv[2]
+        output_file2 = sys.argv[3]
+
+    less_demoss(input_file, output_file1)
+    more_demoss(input_file, output_file2)
 
 # Goto and Ifelse yet to be added
