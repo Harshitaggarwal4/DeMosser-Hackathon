@@ -1,17 +1,12 @@
+'''
+First Updated: 18 Jun 2022
+Last Updated: 23 Jun 2022
+Function:
+'''
 import os
-os.system('clang-format -style=Google -i ./out.c')
-input_c = "out.c"
-output_c = "out2.c"
-
-in1 = open(input_c, "r")
-out1 = open(output_c, "w")
-
-lines = in1.readlines()
-dataTypes = ["char", "float", "double", "int",
-             "long", "long int", "long long", "long long int"]
 
 
-def convertArrToHeap():
+def convertArrToHeap(lines):
     level = 0
     for line_Index in range(len(lines)):
         line = lines[line_Index]
@@ -34,6 +29,8 @@ def convertArrToHeap():
         ind1 = -1
         size = 0    # size of the declared array
         used_DT = "int"
+        dataTypes = ["char", "float", "double", "int",
+                     "long", "long int", "long long", "long long int"]
 
         for type in dataTypes:
             length = len(line)
@@ -146,12 +143,24 @@ def convertArrToHeap():
             line_Index += 1
 
 
-convertArrToHeap()
-convertArrToHeap()
-# print(lines)
-for item in lines:
-    out1.write("%s" % item)
+def array_heap_declaration(input_file, output_file):
 
-out1.close()
-in1.close()
-os.system('clang-format -style=Google -i ./out2.c')
+    os.system('clang-format -style=Google -i ./%s' % input_file)
+    in1 = open(input_file, "r")
+    out1 = open(output_file, "w")
+
+    lines = in1.readlines()
+
+    convertArrToHeap(lines)
+    convertArrToHeap(lines)
+    # print(lines)
+    for item in lines:
+        out1.write("%s" % item)
+
+    out1.close()
+    in1.close()
+    os.system('clang-format -style=Google -i ./%s' % output_file)
+
+
+if __name__ == '__main__':
+    array_heap_declaration("out.c", "out2.c")
