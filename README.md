@@ -1,5 +1,5 @@
 # DeMosser-Hackathon
-De Mosses a given c code
+De Mosses a given C code
 
 ## INSTALLATION AND USAGE PROCEDURE
 1.  Download the zip, and extract the folder.
@@ -39,6 +39,9 @@ De Mosses a given c code
 - [X] **#define** random values
 - [X] added a structure
 - [X] Reformat the c file
+- [X] Add Functions to each File
+- [X] Created a main file for Better Access in Future
+- [ ] Call goto and ifelse functions
 - [ ] Create an interface to add the code to be demossed (half tick maybe ??)
 - [ ] random testcase generator to review the final output
 - [ ] split a function into multiple parts using program flow graph (PFG)
