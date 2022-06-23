@@ -1,5 +1,4 @@
 '''
-Developer: Harshit Aggarwal
 Date: 22 Jun 2022
 Function: changes ifelse to if 
 '''
