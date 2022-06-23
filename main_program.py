@@ -23,35 +23,41 @@ from whileToFor import while_to_for
 
 def less_demoss(input_file, output_file):
     # Lesser Demossing, but not easily detectable
-    reformat(input_file, "out.c")
-    array_heap_declaration("out.c", "out2.c")
-    int_type_change("out2.c", "out3.c")
-    char_type_change("out3.c", "out4.c")
-    float_type_change("out4.c", "out5.c")
-    while_to_for("out5.c", "out6.c")
-    struct_function("out6.c", "out7.c")
-    if1('out7.c', 'out8.c')
-    add_random_stuff("out8.c", "out8.c")
-    if_to_switch("out8.c", "out9.c")
-    change_increment("out9.c", output_file)
-    os.system("rm out*")
+
+    file_name = input_file[:-2]+"_temp_"
+    reformat(input_file, file_name+"1.c")
+    array_heap_declaration(file_name+"1.c", file_name+"2.c")
+    int_type_change(file_name+"2.c", file_name+"3.c")
+    char_type_change(file_name+"3.c", file_name+"4.c")
+    float_type_change(file_name+"4.c", file_name+"5.c")
+    while_to_for(file_name+"5.c", file_name+"6.c")
+    struct_function(file_name+"6.c", file_name+"7.c")
+    if1(file_name+"7.c", file_name+"8.c")
+    add_random_stuff(file_name+"8.c", file_name+"9.c")
+    if_to_switch(file_name+"9.c", file_name+"10.c")
+    change_increment(file_name+"10.c", output_file)
+    os.system("rm %s*" % file_name)
+    os.system('clang-format -style=Microsoft -i ./%s' % output_file)
 
 
 def more_demoss(input_file, output_file):
     # More Demossing, but easily detectable
-    reformat(input_file, "out.c")
-    array_heap_declaration("out.c", "out2.c")
-    int_type_change("out2.c", "out3.c")
-    char_type_change("out3.c", "out4.c")
-    float_type_change("out4.c", "out5.c")
-    while_to_for("out5.c", "out6.c")
-    struct_function("out6.c", "out7.c")
-    if1('out7.c', 'out8.c')
-    add_random_stuff("out8.c", "out8.c")
-    if_to_switch("out8.c", "out9.c")
-    change_increment("out9.c", "out10.c")
-    mul_1_add_zero("out10.c", output_file)
-    os.system("rm out*")
+
+    file_name = input_file[:-2]+"_temp_"
+    reformat(input_file, file_name+"1.c")
+    array_heap_declaration(file_name+"1.c", file_name+"2.c")
+    int_type_change(file_name+"2.c", file_name+"3.c")
+    char_type_change(file_name+"3.c", file_name+"4.c")
+    float_type_change(file_name+"4.c", file_name+"5.c")
+    while_to_for(file_name+"5.c", file_name+"6.c")
+    struct_function(file_name+"6.c", file_name+"7.c")
+    if1(file_name+"7.c", file_name+"8.c")
+    add_random_stuff(file_name+"8.c", file_name+"9.c")
+    if_to_switch(file_name+"9.c", file_name+"10.c")
+    change_increment(file_name+"10.c", file_name+"11.c")
+    mul_1_add_zero(file_name+"11.c", output_file)
+    os.system("rm %s*" % file_name)
+    os.system('clang-format -style=Microsoft -i ./%s' % output_file)
 
 
 if __name__ == '__main__':

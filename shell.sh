@@ -1,5 +1,6 @@
 #! /bin/bash
-sudo apt-get install -q -y clang-format
+sudo apt-get install -q -y clang-format > temp_output_installation
+rm temp_output_installation
 
 python3 main_program.py
 
